@@ -24,6 +24,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="26_motion.cpp" />
+    <ClCompile Include="LTexture.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LTexture.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

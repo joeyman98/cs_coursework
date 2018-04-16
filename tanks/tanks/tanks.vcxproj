@@ -26,10 +26,12 @@
     <ClCompile Include="26_motion.cpp" />
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="LTexture.cpp" />
+    <ClCompile Include="degradconvert.cpp" />
     <ClCompile Include="tank.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
+    <ClInclude Include="degradconvert.h" />
     <ClInclude Include="LTexture.h" />
     <ClInclude Include="tank.h" />
   </ItemGroup>

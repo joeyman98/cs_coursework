@@ -1,5 +1,6 @@
 #pragma once
 #include "LTexture.h"
+#include <math.h>
 class tank
 {
 public:
@@ -8,7 +9,7 @@ public:
 	~tank();
 
 	//Handle any SDL events that affect the tank
-	void handleEvents(SDL_event& e);
+	void handleEvents(SDL_Event& e);
 
 	//Perform any movement on the tank
 	void move();

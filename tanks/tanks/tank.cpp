@@ -1,10 +1,9 @@
 #pragma once
 #include "tank.h"
-#include <math.h>
 #include "degradconvert.h"
+#include <cmath>
 #include <iostream>
 
-using namespace std;
 
 tank::tank(SDL_Renderer* renderer)
 {
@@ -40,12 +39,12 @@ tank::tank(SDL_Renderer* renderer)
 
 tank::~tank()
 {
+
 }
 
 
 void tank::handleEvents(SDL_Event& e)
 {
-	//If a key was pressed
 	if (e.type == SDL_KEYDOWN && e.key.repeat == 0)
 	{
 		switch (e.key.keysym.sym)
@@ -82,6 +81,36 @@ void tank::handleEvents(SDL_Event& e)
 	}
 }
 
+int tank::rotationDirection()
+{
+	int dir = 0;
+	if (inputDirection > direction)
+	{
+
+		if (fabs(direction - inputDirection) > 180)
+		{
+			dir = -1;
+		}
+		else
+		{
+			dir = 1;
+		}
+	}
+	else if (inputDirection < direction)
+	{
+		int i = 0;
+		if (fabs(direction - inputDirection) > 180)
+		{
+			dir = 1;
+		}
+		else
+		{
+			dir = -1;
+		}
+	}
+	return dir;
+}
+
 void tank::processMovement()
 {
 	//Calculate the amount of directional inputs
@@ -107,47 +136,13 @@ void tank::processMovement()
 		if (direction < 0) { direction += 360; }
 
 		//Rotate the tank to the direction of the inputs
-		if (inputDirection > direction)
+		int i = 0;
+		while (i < 5 && inputDirection != direction)
 		{
-			int i = 0;
-			if (abs(direction - inputDirection) > 180)
-			{
-				while (inputDirection != direction && i < 5)
-				{
-					direction -= 1;
-					
-					i += 1;
-				}
-			}
-			else 
-			{
-				while (inputDirection != direction && i < 5)
-				{
-					direction += 1;
-					i += 1;
-				}
-			}
+			direction += rotationDirection();
+			i += 1;
 		}
-		else if (inputDirection < direction)
-		{
-			int i = 0;
-			if (abs(direction - inputDirection) > 180)
-			{
-				while (inputDirection != direction && i < 5)
-				{
-					direction += 1;
-					i += 1;
-				}
-			}
-			else
-			{
-				while (inputDirection != direction && i < 5)
-				{
-					direction -= 1;
-					i += 1;
-				}
-			}
-		}
+
 		xsp = round(speed * cos(degtorad(direction)));
 		ysp = round(speed * sin(degtorad(direction)));
 
@@ -155,8 +150,6 @@ void tank::processMovement()
 		y += ysp;
 	}
 	aimAngle = atan2(my-(y + 16), mx-(x + 16));
-	system("cls");
-	cout << mx << " " << my << " " << aimAngle;
 }
 
 bulletData tank::shooting()

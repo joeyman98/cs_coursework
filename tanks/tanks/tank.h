@@ -1,8 +1,8 @@
 #pragma once
 #include "LTexture.h"
-#include <math.h>
+#include <cmath>
 #include "bulletData.h"
-#include "math.h"
+
 class tank
 {
 public:
@@ -15,6 +15,10 @@ public:
 
 	//Perform any movement on the tank
 	void processMovement();
+
+	void checkCollision();
+
+	int rotationDirection();
 
 	//process all other actions
 	bulletData shooting();

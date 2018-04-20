@@ -1,7 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include <SDL_image.h>
-#include <stdio.h>
+#include <cstdio>
 #include <string>
 #include "LTexture.h"
 #include "tank.h"
@@ -17,6 +17,7 @@ const int SCREEN_HEIGHT = 480;
 
 bool init();
 void close();
+void handleEvents();
 
 SDL_Renderer* renderer = NULL;
 SDL_Window* window = NULL;
@@ -71,6 +72,10 @@ int main(int argc, char* args[])
 				bullets[i]->move();
 			}
 
+			for (int i = 0; i < bullets.size(); ++i)
+			{
+				
+			}
 			//Clear screen
 			SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 			SDL_RenderClear(renderer);

@@ -8,6 +8,9 @@ public:
 	~bullet();
 
 	void move();
+
+	void checkCollision();
+
 	void render(SDL_Renderer* renderer);
 
 private:

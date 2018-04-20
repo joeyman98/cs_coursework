@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="dot.bmp" />
     <Image Include="images\bullet.png" />
     <Image Include="images\tank.png" />
     <Image Include="images\turret.png" />

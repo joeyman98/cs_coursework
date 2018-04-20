@@ -1,10 +1,12 @@
 #pragma once
 #include "LTexture.h"
 #include <math.h>
+#include "bulletData.h"
+#include "math.h"
 class tank
 {
 public:
-	tank();
+	tank(SDL_Renderer* renderer);
 
 	~tank();
 
@@ -12,13 +14,13 @@ public:
 	void handleEvents(SDL_Event& e);
 
 	//Perform any movement on the tank
-	void move();
+	void processMovement();
 
 	//process all other actions
-	void shooting();
+	bulletData shooting();
 
 	//Render the tank and the tank turret
-	void render();
+	void render(SDL_Renderer* renderer);
 private:
 	//The x and y coorinates for the tank
 	int x;
@@ -30,11 +32,30 @@ private:
 	//The current movement direction of the tank
 	int direction;
 
+	//The direction the tank will rotate towards
+	int inputDirection;
+
+	//Whether the tank should move or not
+	bool move;
+
 	//The angle of aiming
-	int aimAngle;
+	double aimAngle;
+
+	//All the movement inputs
+	bool up;
+	bool down;
+	bool left;
+	bool right;
 
 	//The tank texture
 	LTexture texture;
+
+	LTexture turret;
+
+	int mx;
+	int my;
+
+	bool shoot;
 
 };
 

@@ -1,13 +1,14 @@
 #pragma once
 #include "LTexture.h"
+#include "bulletData.h"
 class bullet
 {
 public:
-	bullet();
+	bullet(bulletData newBullet, SDL_Renderer* renderer);
 	~bullet();
 
 	void move();
-	void render();
+	void render(SDL_Renderer* renderer);
 
 private:
 	//The x and y coordinate of the bullet
@@ -15,7 +16,7 @@ private:
 	int y;
 
 	//The direction of movement
-	int direction;
+	double direction;
 
 	//The amount of times the bullet can bounce
 	int bounce;
@@ -23,6 +24,6 @@ private:
 	//The speed of the bullet
 	int speed;
 
-	LTexture texture;
+	LTexture* bulletTexture;
 };
 
